@@ -1,0 +1,8 @@
+composer.phar
+vendor/
+.vscode/
+.history/
+*.vsix
+.history
+.ionide
+
