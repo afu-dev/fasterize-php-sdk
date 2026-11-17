@@ -13,9 +13,19 @@ final readonly class Options
     public const string DEFAULT_URI = "https://api.fasterize.com";
 
     /**
-     * @param array{client_builder: ClientBuilder, uri_factory: UriFactoryInterface} $options
+     * @param array{
+     *     client_builder?: ClientBuilder,
+     *     uri?: string,
+     *     uri_factory?: UriFactoryInterface,
+     * } $options
      */
     public function __construct(
+        /** @var array{
+         *     client_builder?: ClientBuilder,
+         *     uri?: string,
+         *     uri_factory?: UriFactoryInterface,
+         * }
+         */
         private array $options = [],
     ) {
     }

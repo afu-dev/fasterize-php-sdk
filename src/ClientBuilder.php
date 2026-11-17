@@ -19,22 +19,20 @@ final class ClientBuilder
     /** @var list<Plugin> */
     private array $plugins = [];
 
+    private ClientInterface $httpClient;
+
+    private RequestFactoryInterface $requestFactoryInterface;
+
+    private StreamFactoryInterface $streamFactoryInterface;
+
     public function __construct(
-        private ?ClientInterface $httpClient = null,
-        private ?RequestFactoryInterface $requestFactoryInterface = null,
-        private ?StreamFactoryInterface $streamFactoryInterface = null,
+        ?ClientInterface $httpClient = null,
+        ?RequestFactoryInterface $requestFactoryInterface = null,
+        ?StreamFactoryInterface $streamFactoryInterface = null,
     ) {
-        if ($this->httpClient === null) {
-            $this->httpClient = Psr18ClientDiscovery::find();
-        }
-
-        if ($this->requestFactoryInterface === null) {
-            $this->requestFactoryInterface = Psr17FactoryDiscovery::findRequestFactory();
-        }
-
-        if ($this->streamFactoryInterface === null) {
-            $this->streamFactoryInterface = Psr17FactoryDiscovery::findStreamFactory();
-        }
+        $this->httpClient = $httpClient ?? Psr18ClientDiscovery::find();
+        $this->requestFactoryInterface = $requestFactoryInterface ?? Psr17FactoryDiscovery::findRequestFactory();
+        $this->streamFactoryInterface = $streamFactoryInterface ?? Psr17FactoryDiscovery::findStreamFactory();
     }
 
     public function getHttpClient(): HttpMethodsClientInterface
