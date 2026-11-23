@@ -3,6 +3,7 @@
     "description": "A PHP SDK Client For the Fasterize API",
     "type": "library",
     "license": "Apache-2.0",
+    "keywords": ["fasterize", "sdk", "client", "CDN"],
     "autoload": {
         "psr-4": {
             "AFU\\FasterizeSdk\\": "src/"
@@ -24,9 +25,9 @@
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^8.4",
+        "larapack/dd": "^1.1",
         "squizlabs/php_codesniffer": "^4.0",
-        "vimeo/psalm": "^7.3",
-        "larapack/dd": "^1.1"
+        "vimeo/psalm": "^7.3"
     },
     "config": {
         "allow-plugins": {
