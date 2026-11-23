@@ -32,6 +32,10 @@ final readonly class Targets
 
     public function put(string $targetId, array $body): array
     {
+        if (isset($body["id"])) {
+            unset($body["id"]);
+        }
+
         return JsonResponseMediator::getContent(
             $this->sdk->getHttpClient()->put(
                 "/v2/configs/{:config_id}/targets/" . rawurlencode($targetId),
